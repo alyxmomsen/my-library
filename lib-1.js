@@ -20,3 +20,30 @@ function deepEqual(obj1, obj2) {
 
   return true;
 }
+
+
+function customSqrt(number) {
+  if (number < 0) {
+    return NaN;
+  } else if (number === 0) {
+    return 0;
+  } else {
+    var start = 0;
+    var end = number;
+    var precision = 0.000001; // Точность вычисления
+    
+    while (end - start > precision) {
+      var mid = (start + end) / 2;
+      var square = mid * mid;
+      if (square === number) {
+        return mid;
+      } else if (square < number) {
+        start = mid;
+      } else {
+        end = mid;
+      }
+    }
+    
+    return start;
+  }
+}
